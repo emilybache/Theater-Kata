@@ -12,7 +12,7 @@ public class SeatFinderTest {
 
     @Test
     public void findTwoSeatsOnFrontRow() {
-        Theater theater = Theater.standardTheater();
+        Theater theater = ModelObjects.standardTheater();
         List<Seat> booked = Arrays.asList(new Seat("B2"), new Seat("B3"), new Seat("B4"), new Seat("B5"));
         SeatFinder seat_finder = new SeatFinder(theater, booked);
         assertEquals(Arrays.asList(new Seat("A5"), new Seat("A6")),
