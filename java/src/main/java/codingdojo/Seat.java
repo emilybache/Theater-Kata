@@ -2,8 +2,8 @@ package codingdojo;
 
 public class Seat {
 
-    public String row;
-    public int seatNumber;
+    public final String row;
+    public final int seatNumber;
 
     public Seat(String row, int seatNumber) {
         this.row = row;

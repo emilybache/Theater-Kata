@@ -1,0 +1,2 @@
+Suggested Seats[0] = B4
+Suggested Seats[1] = B5

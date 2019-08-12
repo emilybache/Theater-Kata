@@ -11,12 +11,17 @@ import java.util.Arrays;
  */
 public class Theater {
 
-    public final List<String> rows;
-    public final Map<String, List<Integer>> seats;
+    public final List<Seat> seats = new ArrayList<Seat>();
     
-    public Theater(List<String> rows, Map<String, List<Integer>> seats) {
-        this.rows = rows;
-        this.seats = seats;
+    public Theater(Map<String, List<Integer>> seatData) {
+        for (String row : seatData.keySet()) {
+            for (Integer seatNumber :  seatData.get(row)) {
+                seats.add(new Seat(row, seatNumber));
+            }
+        }
     }
 
+    public List<Seat> getAvailableSeats() {
+        return new ArrayList<Seat>(this.seats);
+    }
 }

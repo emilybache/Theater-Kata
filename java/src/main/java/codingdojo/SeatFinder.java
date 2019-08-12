@@ -18,6 +18,7 @@ public class SeatFinder {
     }
 
     public List<Seat> suggest(int partySize) {
-        return null;
+        List<Seat> seats = theater.getAvailableSeats();
+        return seats;
     }
 }

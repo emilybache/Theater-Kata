@@ -3,21 +3,29 @@ package codingdojo;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.approvaltests.Approvals.verifyAll;
 
 public class SeatFinderTest {
 
     @Test
-    public void findTwoSeatsOnFrontRow() {
-        Theater theater = ModelObjects.standardTheater();
-        List<Seat> booked = Arrays.asList(new Seat("B2"), new Seat("B3"), new Seat("B4"), new Seat("B5"));
+    public void suggestSeatsInMiddle() {
+        Theater theater = new Theater(Map.of(
+                "A", Arrays.asList(1, 2, 3, 4, 5, 6, 7),
+                "B", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8),
+                "C", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                "D", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                "E", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                "F", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                "G", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                ));
+        List<Seat> booked = Stream.of("A2", "A3", "A4", "A5", "A6").map(Seat::new).collect(Collectors.toList());
         SeatFinder seat_finder = new SeatFinder(theater, booked);
-        assertEquals(Arrays.asList(new Seat("A5"), new Seat("A6")),
-                     seat_finder.suggest(2));
-
+        List<Seat> suggestedSeats = seat_finder.suggest(2);
+        verifyAll("Suggested Seats", suggestedSeats);
     }
 
 }
