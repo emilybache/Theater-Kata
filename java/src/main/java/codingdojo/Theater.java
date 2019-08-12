@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Arrays;
- 
+
 /**
  * Read-only data about which rows and seats a particular theater has.
  */
 public class Theater {
- 
+
     public final List<String> rows;
     public final Map<String, List<Integer>> seats;
     
@@ -18,7 +18,7 @@ public class Theater {
         this.rows = rows;
         this.seats = seats;
     }
- 
+
     /**
      * Factory method to create a standard theater with 7 rows of 10 seats each
      */
@@ -35,5 +35,5 @@ public class Theater {
         seats.put("G", Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
         return new Theater(rows, seats);
     }
- 
+
 }
